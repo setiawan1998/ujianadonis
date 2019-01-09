@@ -2,12 +2,24 @@
 const modelOrder = use('App/Models/Order') 
 
 class OrderController {
+    
+    async store({response}){
+        const order = await modelOrder.query()
+        .with('product')
+        .fetch();
+        return response.json(order)
+    }
+    async null({response}){
+        const order = await modelOrder.findBy('transaction_id', null)
+        return response.json(order)
+    }
     async create({request, response}){
         const data_request = request.all()
         const order = new modelOrder()
         order.product_id = data_request.product_id
         order.qty = data_request.qty
         order.price = data_request.price
+        order.transaction_id = null
         await order.save()
         return response.json({status: true, message: 'Data Berhasil Disimpan'})
     }

@@ -2,7 +2,7 @@
 const modelProduct = use('App/Models/Product') 
 
 class ProductController {
-    async index({response}){
+    async store({response}){
         const data = await modelProduct.all()
         return response.json(data)
     }

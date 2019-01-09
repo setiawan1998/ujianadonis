@@ -10,6 +10,7 @@ class OrdersSchema extends Schema {
       table.integer('product_id').notNullable().unsigned().references('id').inTable('products')
       table.integer('qty').notNullable()
       table.integer('price').notNullable()
+      table.integer('transaction_id').nullable()
       table.timestamps()
     })
   }

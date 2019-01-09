@@ -10,7 +10,7 @@ class TransactionController {
         await transaction.save()
         return response.json({status: true, message: 'Data Berhasil Disimpan'})
     }
-    async detail({params, response}){
+    async show({params, response}){
         const id = params.id
         const transaction = await modelTransaction.findBy('id', id)
         if(!transaction){

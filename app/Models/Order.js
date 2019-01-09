@@ -4,6 +4,12 @@
 const Model = use('Model')
 
 class Order extends Model {
+    transaction(){
+        return this.hasMany('App/Models/Transaction')
+    }
+    product(){
+        return this.belongsTo('App/Models/Product')
+    }
 }
 
 module.exports = Order
